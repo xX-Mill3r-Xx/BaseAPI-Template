@@ -1,3 +1,4 @@
+using BaseTemplate.API.Middlewares;
 using BaseTemplate.Application;
 using BaseTemplate.Infrastructure;
 
@@ -9,11 +10,8 @@ namespace BaseTemplate.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddApplication();
-
-            builder.Services.AddControllers();
             builder.Services.AddApiVersioning(options =>
             {
                 options.DefaultApiVersion = new Asp.Versioning.ApiVersion(1, 0);
@@ -29,13 +27,13 @@ namespace BaseTemplate.API
                 options.SubstituteApiVersionInUrl = true;
             });
 
+            builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-
             var app = builder.Build();
+            app.UseGlobalExceptionHandling();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
