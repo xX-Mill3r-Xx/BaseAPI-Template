@@ -13,7 +13,7 @@ namespace BaseTemplate.Application
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             services.AddScoped<IProductService, ProductService>();
-            //services.AddScoped<ICategoryService, CategoryService>(); <-- falta implementar
+            services.AddScoped<ICategoryService, CategoryService>();
 
             return services;
         }
