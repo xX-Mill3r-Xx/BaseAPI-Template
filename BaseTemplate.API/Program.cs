@@ -14,6 +14,21 @@ namespace BaseTemplate.API
             builder.Services.AddApplication();
 
             builder.Services.AddControllers();
+            builder.Services.AddApiVersioning(options =>
+            {
+                options.DefaultApiVersion = new Asp.Versioning.ApiVersion(1, 0);
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.ReportApiVersions = true;
+                options.ApiVersionReader = Asp.Versioning.ApiVersionReader.Combine(
+                    new Asp.Versioning.UrlSegmentApiVersionReader(),
+                    new Asp.Versioning.HeaderApiVersionReader("X-Api-Version"));
+            })
+            .AddApiExplorer(options =>
+            {
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
+            });
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
