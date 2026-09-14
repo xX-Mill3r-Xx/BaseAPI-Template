@@ -12,7 +12,7 @@
             SetName(name);
         }
 
-        private void SetName(string name)
+        public void SetName(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("O nome da categoria não pode ser vazio.", nameof(name));
