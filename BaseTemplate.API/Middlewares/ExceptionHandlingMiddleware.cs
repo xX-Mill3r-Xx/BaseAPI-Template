@@ -43,6 +43,11 @@ namespace BaseTemplate.API.Middlewares
                     "Erro de validação.",
                     validationEx.Errors
                 ),
+                BusinessRuleException businessEx => (
+                    HttpStatusCode.Conflict,
+                    businessEx.Message,
+                    (IDictionary<string, string[]>?)null
+                ),
                 ArgumentException argEx => (
                     HttpStatusCode.BadRequest,
                     argEx.Message,
