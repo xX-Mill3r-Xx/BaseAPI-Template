@@ -399,3 +399,34 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# ==========================================================
+# Arquivos sensíveis do projeto (connection strings, secrets)
+# ==========================================================
+
+# Configurações de ambiente com dados sensíveis
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Staging.json
+appsettings.Production.json
+appsettings.*.json
+!appsettings.json
+!appsettings.Example.json
+
+# User Secrets do .NET (caso gerados localmente dentro do repo)
+secrets.json
+
+# Arquivos de variáveis de ambiente
+.env
+.env.*
+!.env.example
+
+# Certificados e chaves
+*.pfx
+*.key
+*.pem
+*.cer
+
+# Arquivos de configuração local do EF Core / connection strings soltas
+connectionstrings.json
+*.connectionstrings.json
